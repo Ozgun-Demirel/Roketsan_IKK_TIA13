@@ -1,0 +1,135 @@
+;==============================================================================
+;
+;    Manufacturer : Weidmueller GmbH & Co.KG
+;                   Klingenbergstr. 16
+;                   32758 Detmold
+;                   Germany
+;
+;    Phone        : +49 (5231) 1429-0
+;    FAX          : +49 (5231) 1425-0
+;    EMAIL        : support-electronics@weidmueller.de
+;    WEB          : www.weidmueller.de
+;    Hotline      : +49 (5231) 1429-2828
+;
+;    Version      : 1.03
+;    Author       : Andreas Boeckstiegel
+;    Date         : 19.11.2015
+;    File         : WIUR09CA.gsd
+;
+;==============================================================================
+;;
+
+#Profibus_DP
+;
+; Prm-Text-Def-List -----------------------------------------------------------
+;
+PrmText = 1
+Text(0) = "Do not report"
+Text(1) = "Report"
+EndPrmText
+;
+; <Ext-User-Prm-Data-Def-List> ------------------------------------------------
+;                     											
+ExtUserPrmData = 1 "Channel Diagnostic"							
+Bit(0) 1 0-1															
+Prm_Text_Ref = 1														
+EndExtUserPrmData
+; 
+
+; General Keys ----------------------------------------------------------------
+;
+GSD_Revision            = 2
+Vendor_Name             = "Weidmueller"
+Model_Name              = "UR67-PB-78-16DIX-12-60K"				
+Revision                = "1.03"						
+																				
+Ident_Number            = 0x09CA
+
+Protocol_Ident          = 0                     ; 0: PROFIBUS-DP
+Station_Type            = 0                     ; 0: DP-Slave
+FMS_supp                = 0                     ; 0: no FMS/DP mixed device
+;
+Hardware_Release        = "V1.00"
+Software_Release        = "V1.02"							
+;
+9.6_supp                = 1
+19.2_supp               = 1
+31.25_supp              = 0
+45.45_supp              = 1
+93.75_supp              = 1
+187.5_supp              = 1
+500_supp                = 1
+1.5M_supp               = 1
+3M_supp                 = 1
+6M_supp                 = 1
+12M_supp                = 1
+;
+;																																
+MaxTsdr_9.6             = 15									
+MaxTsdr_19.2            = 15									
+MaxTsdr_31.25           = 15									
+MaxTsdr_45.45           = 15									
+MaxTsdr_93.75           = 15									
+MaxTsdr_187.5           = 15									
+MaxTsdr_500             = 15																								
+MaxTsdr_1.5M            = 25									
+MaxTsdr_3M              = 50	  										
+MaxTsdr_6M              = 100								
+MaxTsdr_12M             = 200								
+;
+Redundancy              = 0              	; 0: not supported
+Repeater_Ctrl_Sig       = 0                     
+24V_Pins                = 0            		; 0: not connected
+Implementation_Type     = "SPC3"							
+Bitmap_Device           = "UR___60K"
+Bitmap_Diag             = "UR_D_60K"
+;
+; User-defined Keys -----------------------------------------------------------
+;Periphery="DPS"
+;OffsetFirstMPDBlock=2												
+;ETERDelay=0																
+;MaxResponseDelay=0													
+;		
+; Slave specific keys ---------------------------------------------------------
+;
+Freeze_Mode_supp        = 1                    ; 1: supported
+Sync_Mode_supp          = 1                    ; 1: supported
+Auto_Baud_supp          = 1                    ; 1: supported
+Set_Slave_Add_supp      = 1                    ; 1: supported
+
+Min_Slave_Intervall     = 6                    ; 6 * 0.1 ms = 0,6 ms
+;					       
+Modular_Station         = 1                    ; 1: modular station
+Max_Module              = 1       					 
+Max_Input_Len           = 0x02                 
+Max_Output_Len          = 0x02                 
+Max_Data_Len            = 0x04                
+;
+Max_User_Prm_Data_Len    	= 0x05
+Ext_User_Prm_Data_Const(0)	= 0x00,0x00,0x00,0x01 ; Prm-Byte 7-9 for DPV1 reserved
+Ext_User_Prm_Data_Ref(4)	= 0x01                ; Kanaldiagnosemeldung Auswahlfenster ja/nein
+Max_Diag_Data_Len       = 0x40                 
+; ----------------------------------------------------------------------------- 
+Unit_Diag_Bit(0000) = "Low voltage actuator"	
+Unit_Diag_Bit(0001) = "Low voltage sensor"
+Unit_Diag_Bit(0002) = "Sensor overload"
+Unit_Diag_Bit(0003) = "Actuator fault"
+Unit_Diag_Bit(0004) = "Over-/Underflow"
+Unit_Diag_Bit(0005) = "Open wire"																				
+Unit_Diag_Bit(0007) = "Module error"
+; ----------------------------------------------------------------------------- 
+
+Slave_Family            = 3@UR67 System    			;3: I/O		
+Fail_Safe               = 0
+Modul_Offset            = 0
+
+; I/O Modules:
+; Module Select 1
+Module = "UR67-PB-78-16DIO-12-60K"   0x11, 0x21
+EndModule
+
+; Module Select 2
+Module = "UR67-PB-78-16DI-12-60K"   0x11
+EndModule
+
+; =============================================================================

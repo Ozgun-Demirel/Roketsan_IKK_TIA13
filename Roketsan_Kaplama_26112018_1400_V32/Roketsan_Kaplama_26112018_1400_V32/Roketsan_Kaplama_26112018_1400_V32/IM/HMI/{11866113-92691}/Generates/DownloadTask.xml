@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DownloadTask>
+  <FullDownload>pdata.fwc</FullDownload>
+  <FullDownload type="ADMINDATA">pdata.pwx</FullDownload>
+  <FullDownload type="RECIPE">pdata.Recipe_1.csv</FullDownload>
+  <FullDownload>pdata.tfz</FullDownload>
+  <FullDownload>ProjectSettings.hsf</FullDownload>
+</DownloadTask>
